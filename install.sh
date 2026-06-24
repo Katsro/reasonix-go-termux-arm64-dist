@@ -1,11 +1,26 @@
 #!/bin/bash
-# Reasonix Go 一键安装脚本
-# 用法: curl -fsSL https://raw.githubusercontent.com/Katsro/reasonix-go-dist/main/install.sh | bash
+# Reasonix Go 一键安装/卸载脚本
+# 安装: curl -fsSL https://raw.githubusercontent.com/Katsro/reasonix-go-dist/main/install.sh | bash
+# 卸载: curl -fsSL https://raw.githubusercontent.com/Katsro/reasonix-go-dist/main/install.sh | bash -s -- --uninstall
 
 set -e
 
-REPO="Katsro/reasonix-go-dist"
 CMD_NAME="reasonixgo"
+INSTALL_DIR="${PREFIX}/bin"
+
+# 卸载
+if [ "$1" = "--uninstall" ]; then
+    if [ -f "$INSTALL_DIR/$CMD_NAME" ]; then
+        rm -f "$INSTALL_DIR/$CMD_NAME"
+        echo "✅ Uninstalled: $INSTALL_DIR/$CMD_NAME"
+    else
+        echo "⚠️  Not found: $INSTALL_DIR/$CMD_NAME"
+    fi
+    exit 0
+fi
+
+# 安装
+REPO="Katsro/reasonix-go-dist"
 TMP_DIR=$(mktemp -d)
 
 cleanup() { rm -rf "$TMP_DIR"; }
@@ -29,10 +44,10 @@ echo "Downloading $BIN_URL ..."
 curl -fsSL "$BIN_URL" -o "$TMP_DIR/$CMD_NAME"
 chmod +x "$TMP_DIR/$CMD_NAME"
 
-INSTALL_DIR="${PREFIX}/bin"
 mv "$TMP_DIR/$CMD_NAME" "$INSTALL_DIR/$CMD_NAME"
 
 echo ""
 echo "✅ Installed: $INSTALL_DIR/$CMD_NAME"
 echo ""
-echo "Test: $CMD_NAME --version"
+echo "Uninstall: curl -fsSL https://raw.githubusercontent.com/Katsro/reasonix-go-dist/main/install.sh | bash -s -- --uninstall"
+echo "Test:      $CMD_NAME --version"

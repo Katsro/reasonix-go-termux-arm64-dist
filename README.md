@@ -4,13 +4,17 @@
 
 源码: [serend11/reasonix_go](https://github.com/serend11/reasonix_go)
 
-## 一键安装
+## 安装
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/Katsro/reasonix-go-dist/main/install.sh | bash
 ```
 
-安装后获得 `reasonixgo` 全局命令。
+## 卸载
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Katsro/reasonix-go-dist/main/install.sh | bash -s -- --uninstall
+```
 
 ## 手动安装
 
