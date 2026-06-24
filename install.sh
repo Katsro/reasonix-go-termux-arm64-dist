@@ -13,15 +13,16 @@ trap cleanup EXIT
 
 OS=$(uname -s | tr '[:upper:]' '[:lower:]')
 ARCH=$(uname -m)
-case "$ARCH" in
-    arm64|aarch64) ARCH="arm64" ;;
-    x86_64|amd64)  ARCH="amd64" ;;
-    *) echo "Unsupported arch: $ARCH"; exit 1 ;;
-esac
-case "$OS" in
-    linux|darwin) ;;
-    *) echo "Unsupported OS: $OS"; exit 1 ;;
-esac
+
+# 当前仅测试过 Termux (android/arm64) 环境
+is_arm64=false
+case "$ARCH" in arm64|aarch64) is_arm64=true ;; esac
+if [ "$OS" != "linux" ] || [ "$is_arm64" != "true" ] || [ ! -d /data/data/com.termux ]; then
+    echo "❌ 当前仅支持 Termux (android/arm64) 环境"
+    echo "   检测到: OS=$OS ARCH=$ARCH"
+    exit 1
+fi
+ARCH="arm64"
 
 BIN_URL="https://github.com/$REPO/releases/latest/download/reasonixgo-${OS}-${ARCH}"
 echo "Downloading $BIN_URL ..."
