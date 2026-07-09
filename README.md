@@ -29,3 +29,4 @@ curl -fsSL https://raw.githubusercontent.com/Katsro/reasonix-go-dist/main/instal
 - Go 版本: 1.26.3
 - 平台: android/arm64
 - 构建: CGO_ENABLED=0
+- 源码版本: [`12425cf`](https://github.com/serend11/reasonix_go/commit/12425cf) (2026-06-08)
