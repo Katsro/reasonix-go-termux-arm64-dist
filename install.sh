@@ -1,7 +1,7 @@
 #!/bin/bash
 # Reasonix Go 一键安装/卸载脚本
-# 安装: curl -fsSL https://raw.githubusercontent.com/Katsro/reasonix-go-dist/main/install.sh | bash
-# 卸载: curl -fsSL https://raw.githubusercontent.com/Katsro/reasonix-go-dist/main/install.sh | bash -s -- --uninstall
+# 安装: curl -fsSL https://raw.githubusercontent.com/Katsro/reasonix-go-termux-arm64-dist/main/install.sh | bash
+# 卸载: curl -fsSL https://raw.githubusercontent.com/Katsro/reasonix-go-termux-arm64-dist/main/install.sh | bash -s -- --uninstall
 
 set -e
 
@@ -20,7 +20,7 @@ if [ "$1" = "--uninstall" ]; then
 fi
 
 # 安装
-REPO="Katsro/reasonix-go-dist"
+REPO="Katsro/reasonix-go-termux-arm64-dist"
 TMP_DIR=$(mktemp -d)
 
 cleanup() { rm -rf "$TMP_DIR"; }
@@ -49,5 +49,5 @@ mv "$TMP_DIR/$CMD_NAME" "$INSTALL_DIR/$CMD_NAME"
 echo ""
 echo "✅ Installed: $INSTALL_DIR/$CMD_NAME"
 echo ""
-echo "Uninstall: curl -fsSL https://raw.githubusercontent.com/Katsro/reasonix-go-dist/main/install.sh | bash -s -- --uninstall"
+echo "Uninstall: curl -fsSL https://raw.githubusercontent.com/Katsro/reasonix-go-termux-arm64-dist/main/install.sh | bash -s -- --uninstall"
 echo "Test:      $CMD_NAME --version"

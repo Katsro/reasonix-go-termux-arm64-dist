@@ -18,7 +18,7 @@ curl -fsSL https://raw.githubusercontent.com/Katsro/reasonix-go-dist/main/instal
 
 ## 手动安装
 
-从 [Releases](https://github.com/Katsro/reasonix-go-dist/releases) 下载对应平台的二进制，放到 `$PREFIX/bin/reasonixgo` 即可。
+从 [Releases](https://github.com/Katsro/reasonix-go-termux-arm64-dist/releases) 下载对应平台的二进制，放到 `$PREFIX/bin/reasonixgo` 即可。
 
 ## ⚠️ 兼容性说明
 
